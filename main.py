@@ -30,4 +30,9 @@ while True:
         char_count = len("".join(clean_text))
         sg.popup(f"Words: {word_count}\nCharacters: {char_count}")
 
+    if event in smileys_events:
+        current_text: str = values["-TEXTBOX-"]
+        new_text = current_text + " " + event
+        window["-TEXTBOX-"].update(new_text)
+
 window.close()
