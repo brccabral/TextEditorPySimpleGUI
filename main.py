@@ -24,6 +24,10 @@ while True:
         break
 
     if event == "Word Count":
-        print("test")
+        full_text: str = values["-TEXTBOX-"]
+        clean_text = full_text.replace("\n", " ").split(" ")
+        word_count = len(clean_text)
+        char_count = len("".join(clean_text))
+        sg.popup(f"Words: {word_count}\nCharacters: {char_count}")
 
 window.close()
