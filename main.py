@@ -9,13 +9,14 @@ menu_layout = [
     ["Add", smileys],
 ]
 
+sg.theme("GrayGrayGray")
 layout = [
     [sg.Menu(menu_layout)],
     [sg.Text("Untitled", key="-DOCNAME-")],
-    [sg.Multiline()],
+    [sg.Multiline(key="-TEXTBOX-", no_scrollbar=True, size=(40, 30))],
 ]
 
-window = sg.Window("Title", layout, size=(300, 300))
+window = sg.Window("Title", layout)
 
 while True:
     event, values = window.read()
