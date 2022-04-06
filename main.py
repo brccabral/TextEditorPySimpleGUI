@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import pathlib
 
 smileys = ["happy", [":)", "xD", ":D", "<3"], "sad", [":(", "T_T"], "other", [":3"]]
 smileys_events = smileys[1] + smileys[3] + smileys[5]
@@ -34,5 +35,12 @@ while True:
         current_text: str = values["-TEXTBOX-"]
         new_text = current_text + " " + event
         window["-TEXTBOX-"].update(new_text)
+
+    if event == "Open":
+        file_path: str = sg.popup_get_file("open", no_window=True)
+        if file_path:
+            file = pathlib.Path(file_path)
+            window["-TEXTBOX-"].update(file.read_text())
+            window["-DOCNAME-"].update(file_path.split("/")[-1])
 
 window.close()
